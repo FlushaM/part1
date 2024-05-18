@@ -1,36 +1,23 @@
-import { useState } from 'react'
-
-const Display = ({ counter }) => <div>{counter}</div>
-
-const Button = ({ onSmash, text }) => <button onClick={onSmash}>{text}</button>
+import { useState } from "react"
 
 const App = () => {
-  const [counter, setCounter] = useState(0)
-  console.log('rendering with counter value', counter)
-
-  const increaseByOne = () => {
-    console.log('increasing, value before', counter)
-    setCounter(counter + 1)
-  }
-
-  const decreaseByOne = () => { 
-    console.log('decreasing, value before', counter)
-    setCounter(counter - 1)
-  }
-
-  const setToZero = () => {
-    console.log('resetting to zero, value before', counter)
-    setCounter(0)
-  }
-
+  const [good, setGood] = useState(0);
+  const [neutral, setNeutral] = useState(0);
+  const [bad, setBad] = useState(0);
   return (
     <div>
-      <Display counter={counter} />
-      <Button onClick={increaseByOne} text="plus" />
-      <Button onClick={setToZero} text="zero" />
-      <Button onClick={decreaseByOne} text="minus" />
+      <h1>Give Feedback</h1>
+      <button onClick={() => setGood(good + 1)}>Good</button>
+      <button onClick={() => setNeutral(neutral + 1)}>Neutral</button>
+      <button onClick={() => setBad(bad + 1)}>Bad</button>
+      <h2>Statistics</h2>
+      <p>Good: {good}</p>
+      <p>Neutral: {neutral}</p>
+      <p>Bad: {bad}</p>
     </div>
-  )
-}
+  );
+};
+
+
 
 export default App
